@@ -2,21 +2,21 @@ python -m venv .env
 source ./.env/bin/activate
 pip install -r requirements.txt
 
-#Key Improvements Made:
-##Architecture:
+# Key Improvements Made:
+## Architecture:
 
 * Encapsulated game logic in a Game class
 * Removed global variable dependencies
 * Separated concerns better (Field, Shape, Block, Game)
 
-##Bug Fixes:
+## Bug Fixes:
 
-*Fixed multiple line clearing bug
+* Fixed multiple line clearing bug
 * Added wall kick system for rotation
 * Improved spawn positioning (centers shapes)
 * Better bounds checking
 
-##New Features:
+## New Features:
 
 * Score tracking (Tetris scoring system)
 * Lines cleared counter
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 * Better visual feedback (borders on blocks, grid lines)
 * Semi-transparent game over overlay
 
-##Code Quality:
+## Code Quality:
 
 * Proper type hints
 * Consistent indentation
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 * More efficient algorithms
 * Added docstrings
 
-##Gameplay:
+## Gameplay:
 
 * Doubled window size for better visibility
 * Smoother controls with key repeat
