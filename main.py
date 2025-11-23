@@ -285,11 +285,9 @@ class Game:
         """Handle keyboard input with key repeat."""
         keys = pg.key.get_pressed()
         
-        # Handle rotation (no repeat)
-        if keys[pg.K_UP] or keys[pg.K_w] or keys[pg.K_z]:
-            if self.held_key != 'rotate':
-                self.current_shape.rotate()
-                self.held_key = 'rotate'
+        # Handle rotation (no repeat - only on key press, not hold)
+        # This is handled in the event loop now, not here
+        pass
         
         # Handle fast fall
         self.fast_fall = keys[pg.K_DOWN] or keys[pg.K_s]
@@ -325,8 +323,10 @@ class Game:
                 self._lock_shape()
                 self.held_key = 'hard_drop'
         
-        else:
-            self.held_key = None
+        # Reset held key when no relevant keys are pressed
+        elif not (keys[pg.K_LEFT] or keys[pg.K_a] or keys[pg.K_RIGHT] or keys[pg.K_d] or keys[pg.K_SPACE]):
+            if self.held_key in ['left', 'right', 'hard_drop']:
+                self.held_key = None
 
     def _lock_shape(self):
         """Lock the current shape and spawn a new one."""
@@ -399,7 +399,11 @@ class Game:
                 if event.type == pg.QUIT:
                     running = False
                 elif event.type == pg.KEYDOWN:
-                    if event.key == pg.K_r and self.is_game_over:
+                    # Rotation only on key press (KEYDOWN), not hold
+                    if event.key in (pg.K_UP, pg.K_w, pg.K_z):
+                        if not self.is_game_over:
+                            self.current_shape.rotate()
+                    elif event.key == pg.K_r and self.is_game_over:
                         self.reset_game()
                     elif event.key == pg.K_ESCAPE:
                         running = False
