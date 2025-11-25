@@ -1,44 +1,54 @@
-Windows
+# Tetris C Compilation and Running Instructions
 
-Install a C compiler (if you don't have one):
+## Windows
 
-Download MinGW from https://www.mingw-w64.org/ or
-Install GCC via MSYS2, or
-Use Visual Studio with C++ tools
+**Install a C compiler (if you don't have one):**
+- Download [MinGW](https://www.mingw-w64.org/), or
+- Install GCC via MSYS2, or
+- Use Visual Studio with C++ tools
 
+**Compile:**
+```bash
+gcc tetris.c -o tetris.exe
+```
 
-Compile:
+**Run:**
+```bash
+tetris.exe
+```
 
-bash   gcc tetris.c -o tetris.exe
+## Linux
 
-Run:
+**Install GCC (if not already installed):**
+```bash
+sudo apt install gcc        # Ubuntu/Debian
+sudo yum install gcc        # Fedora/RHEL
+sudo pacman -S gcc          # Arch
+```
 
-bash   tetris.exe
-Linux
+**Compile:**
+```bash
+gcc tetris.c -o tetris
+```
 
-Install GCC (if not already installed):
+**Run:**
+```bash
+./tetris
+```
 
-bash   sudo apt install gcc        # Ubuntu/Debian
-   sudo yum install gcc        # Fedora/RHEL
-   sudo pacman -S gcc          # Arch
+## macOS
 
-Compile:
+**Install Xcode Command Line Tools (if not already installed):**
+```bash
+xcode-select --install
+```
 
-bash   gcc tetris.c -o tetris
+**Compile:**
+```bash
+gcc tetris.c -o tetris
+```
 
-Run:
-
-bash   ./tetris
-macOS
-
-Install Xcode Command Line Tools (if not already installed):
-
-bash   xcode-select --install
-
-Compile:
-
-bash   gcc tetris.c -o tetris
-
-Run:
-
-bash   ./tetris
+**Run:**
+```bash
+./tetris
+```
